@@ -1,0 +1,94 @@
+#! 
+:ivl_version "14.0 (devel)" "(s20260301-1285-g231fb9245-dirty)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\OSS-CA~1\lib\ivl\system.vpi";
+:vpi_module "C:\OSS-CA~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\OSS-CA~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\OSS-CA~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\OSS-CA~1\lib\ivl\va_math.vpi";
+S_0000024aa0d4b8c0 .scope module, "tb" "tb" 2 4;
+ .timescale -9 -12;
+v0000024aa0d996b0_0 .var "clk";
+v0000024aa0d999d0_0 .var "ena";
+v0000024aa0d98df0_0 .var "rst_n";
+v0000024aa0d98d50_0 .var "ui_in", 7 0;
+v0000024aa0d99b10_0 .var "uio_in", 7 0;
+L_0000024aa0d9ad18 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0000024aa0d99a70_0 .net "uio_oe", 7 0, L_0000024aa0d9ad18;  1 drivers
+L_0000024aa0d9acd0 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0000024aa0d99070_0 .net "uio_out", 7 0, L_0000024aa0d9acd0;  1 drivers
+v0000024aa0d98cb0_0 .net "uo_out", 7 0, L_0000024aa0d99570;  1 drivers
+S_0000024aa0d164e0 .scope module, "user_project" "tt_um_blinky" 2 26, 3 3 0, S_0000024aa0d4b8c0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "ui_in";
+    .port_info 1 /OUTPUT 8 "uo_out";
+    .port_info 2 /INPUT 8 "uio_in";
+    .port_info 3 /OUTPUT 8 "uio_out";
+    .port_info 4 /OUTPUT 8 "uio_oe";
+    .port_info 5 /INPUT 1 "ena";
+    .port_info 6 /INPUT 1 "clk";
+    .port_info 7 /INPUT 1 "rst_n";
+L_0000024aa0d9ac88 .functor BUFT 1, C4<0000000>, C4<0>, C4<0>, C4<0>;
+v0000024aa0d16dd0_0 .net/2u *"_ivl_0", 6 0, L_0000024aa0d9ac88;  1 drivers
+v0000024aa0d4bb20_0 .net *"_ivl_10", 17 0, L_0000024aa0d99bb0;  1 drivers
+L_0000024aa0d9ad60 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000024aa0d4bbc0_0 .net/2u *"_ivl_8", 0 0, L_0000024aa0d9ad60;  1 drivers
+v0000024aa0d16740_0 .net "_unused", L_0000024aa0d99390;  1 drivers
+v0000024aa0d167e0_0 .net "clk", v0000024aa0d996b0_0;  1 drivers
+v0000024aa0d16880_0 .var "counter", 23 0;
+v0000024aa0d16920_0 .net "ena", v0000024aa0d999d0_0;  1 drivers
+v0000024aa0d47450_0 .var "led_state";
+v0000024aa0d474f0_0 .net "rst_n", v0000024aa0d98df0_0;  1 drivers
+v0000024aa0d47590_0 .net "ui_in", 7 0, v0000024aa0d98d50_0;  1 drivers
+v0000024aa0d47630_0 .net "uio_in", 7 0, v0000024aa0d99b10_0;  1 drivers
+v0000024aa0d476d0_0 .net "uio_oe", 7 0, L_0000024aa0d9ad18;  alias, 1 drivers
+v0000024aa0d99750_0 .net "uio_out", 7 0, L_0000024aa0d9acd0;  alias, 1 drivers
+v0000024aa0d99610_0 .net "uo_out", 7 0, L_0000024aa0d99570;  alias, 1 drivers
+E_0000024aa0d3ad50 .event posedge, v0000024aa0d167e0_0;
+L_0000024aa0d99570 .concat [ 1 7 0 0], v0000024aa0d47450_0, L_0000024aa0d9ac88;
+L_0000024aa0d99bb0 .concat [ 1 8 8 1], L_0000024aa0d9ad60, v0000024aa0d99b10_0, v0000024aa0d98d50_0, v0000024aa0d999d0_0;
+L_0000024aa0d99390 .reduce/and L_0000024aa0d99bb0;
+    .scope S_0000024aa0d164e0;
+T_0 ;
+    %wait E_0000024aa0d3ad50;
+    %load/vec4 v0000024aa0d474f0_0;
+    %nor/r;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %pushi/vec4 0, 0, 24;
+    %assign/vec4 v0000024aa0d16880_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000024aa0d47450_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v0000024aa0d16880_0;
+    %cmpi/e 4999999, 0, 24;
+    %jmp/0xz  T_0.2, 4;
+    %pushi/vec4 0, 0, 24;
+    %assign/vec4 v0000024aa0d16880_0, 0;
+    %load/vec4 v0000024aa0d47450_0;
+    %inv;
+    %assign/vec4 v0000024aa0d47450_0, 0;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/vec4 v0000024aa0d16880_0;
+    %addi 1, 0, 24;
+    %assign/vec4 v0000024aa0d16880_0, 0;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0000024aa0d4b8c0;
+T_1 ;
+    %vpi_call 2 7 "$dumpfile", "tb.vcd" {0 0 0};
+    %vpi_call 2 8 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000024aa0d4b8c0 {0 0 0};
+    %delay 1000, 0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb.v";
+    "..\src\project.v";

@@ -1,20 +1,11 @@
-<!---
-
-This file is used to generate your project datasheet. Please fill in the information below and delete any unused
-sections.
-
-You can also include images in this folder and reference them in the markdown. Each image must be less than
-512 kb in size, and the combined size of all images must be less than 1 MB.
--->
-
 ## How it works
 
-Explain how your project works
+Een 24-bit teller telt de 10 MHz systeemklok tot 5.000.000 en inverteert daarna het signaal op output-pin `uo[0]`. Hierdoor knippert een aangesloten LED met een frequentie van 1 Hz (0,5 seconde aan, 0,5 seconde uit).
 
 ## How to test
 
-Explain how to use your project
+Sluit een LED met een voorschakelweerstand aan op output-pin `uo[0]` en GND. Zet de klok op 10 MHz en maak `rst_n` hoog (`1`).
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+Een standaard LED en een weerstand (bijv. 330 ohm) aangesloten op `uo[0]`.
